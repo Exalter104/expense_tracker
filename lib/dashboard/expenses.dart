@@ -1,3 +1,4 @@
+import 'package:expense_tracker/dashboard/chart/chart.dart';
 import 'package:expense_tracker/dashboard/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/dashboard/new_expense.dart';
 import 'package:expense_tracker/model/expensesdata_model.dart';
@@ -43,20 +44,25 @@ class _ExpensesState extends State<Expenses> {
 
   final List<ExpenseDataModel> _registeredExpenses = [
     ExpenseDataModel(
-        title: "Exarth",
+        title: "food",
         amount: 70.89,
         date: DateTime.now(),
-        category: Category.serviceApp),
+        category: Category.food),
     ExpenseDataModel(
-        title: "Exalter",
+        title: "leisure",
         amount: 56778.89,
         date: DateTime.now(),
-        category: Category.seedswildApp),
+        category: Category.leisure),
     ExpenseDataModel(
-        title: "Exarth",
+        title: "travel",
         amount: 233.89,
         date: DateTime.now(),
-        category: Category.airbnbApp)
+        category: Category.travel),
+    ExpenseDataModel(
+        title: "work",
+        amount: 233.89,
+        date: DateTime.now(),
+        category: Category.work)
   ];
   @override
   Widget build(BuildContext context) {
@@ -80,14 +86,7 @@ class _ExpensesState extends State<Expenses> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 5),
-              height: 100,
-              width: 400,
-              decoration: BoxDecoration(
-                  color: Colors.amberAccent,
-                  borderRadius: BorderRadius.circular(20)),
-              child: const Center(child: Text("Chart ....."))),
+          Chart(expenses: _registeredExpenses),
           Expanded(child: mainContent)
         ],
       ),

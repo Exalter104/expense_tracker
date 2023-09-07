@@ -15,7 +15,7 @@ class _NewExpenseState extends State<NewExpense> {
   final _amountController = TextEditingController();
   final _titleController = TextEditingController();
   DateTime? _selectDate;
-  Category _selectedCategory = Category.seedswildApp;
+  Category _selectedCategory = Category.work;
   void _presentDatePicker() async {
     final now = DateTime.now();
     final firstDate = DateTime(now.day, now.month, now.year - 1);
@@ -79,7 +79,6 @@ class _NewExpenseState extends State<NewExpense> {
       child: Column(
         children: [
           TextFormField(
-            // onChanged: _saveTitleInput,
             controller: _titleController,
             decoration: const InputDecoration(
                 label: Text(

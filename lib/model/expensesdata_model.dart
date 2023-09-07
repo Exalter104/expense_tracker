@@ -5,13 +5,13 @@ import 'package:uuid/uuid.dart';
 final formatter = DateFormat.yMd();
 const uuid = Uuid();
 
-enum Category { airbnbApp, seedswildApp, taskApp, serviceApp }
+enum Category { food, leisure, travel, work }
 
 const categoryIcons = {
-  Category.airbnbApp: Icons.room_service,
-  Category.seedswildApp: Icons.queue_play_next_sharp,
-  Category.serviceApp: Icons.house_outlined,
-  Category.taskApp: Icons.task_alt_sharp,
+  Category.food: Icons.room_service,
+  Category.leisure: Icons.queue_play_next_sharp,
+  Category.travel: Icons.house_outlined,
+  Category.work: Icons.task_alt_sharp,
 };
 
 class ExpenseDataModel {
@@ -30,5 +30,24 @@ class ExpenseDataModel {
 
   String get formattedDate {
     return formatter.format(date);
+  }
+}
+
+class ExpenseBucket {
+  final Category category;
+  final List<ExpenseDataModel> expenseDataModel;
+
+  ExpenseBucket({required this.category, required this.expenseDataModel});
+
+  ExpenseBucket.forCategory(List<ExpenseDataModel> allExpenses, this.category)
+      : expenseDataModel = allExpenses
+            .where((expense) => expense.category == category)
+            .toList();
+  double get totalExpenses {
+    double sum = 0;
+    for (final expense in expenseDataModel) {
+      sum = sum + expense.amount;
+    }
+    return sum;
   }
 }
