@@ -24,11 +24,11 @@ class ExpensesItems extends StatelessWidget {
                   const Spacer(),
                   Row(
                     children: [
-                      const Icon(Icons.flutter_dash),
+                      Icon(categoryIcons[expenseDataModel.category]),
                       const SizedBox(
                         width: 10,
                       ),
-                      Text(expenseDataModel.date.toString()),
+                      Text(expenseDataModel.formattedDate),
                     ],
                   )
                 ],

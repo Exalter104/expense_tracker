@@ -13,8 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Expense tracker App ',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        theme: ThemeData().copyWith(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 96, 59, 181),
+          ),
+          appBarTheme: const AppBarTheme().copyWith(),
           useMaterial3: true,
         ),
         home: const Expenses());
